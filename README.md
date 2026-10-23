@@ -97,3 +97,8 @@ in `prefs.json` next to it.
 - A clip with several Fusion comp versions: the plugin edits the first one.
 - Very long timelines (hundreds of clips) make the playhead tracking slower;
   the plugin rescans the timeline every 1.5 s.
+
+## License
+
+MIT, see [LICENSE](LICENSE). `WorkflowIntegration.node` belongs to Blackmagic
+Design; it is not in this repo, the install script copies it from your Resolve.

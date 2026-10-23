@@ -2,6 +2,7 @@
   "name": "ramp-me-dev",
   "private": true,
   "description": "Dev tasks for the Ramp Me DaVinci Resolve plugin (the plugin itself is in plugin/)",
+  "license": "MIT",
   "scripts": {
     "test": "node --test test/*.test.js",
     "install-plugin": "scripts/install.sh",
