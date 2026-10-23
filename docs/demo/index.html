@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:">
+  <title>Ramp Me</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <div class="brand">
+        <img class="brand-mark" src="../img/icon.svg" alt="">
+        <div>
+          <div class="brand-name">RAMP ME</div>
+          <div class="brand-sub">speed ramps</div>
+        </div>
+      </div>
+      <nav class="tabs" role="tablist">
+        <button class="tab" role="tab" data-tab="graph" aria-selected="true">Graph</button>
+        <button class="tab" role="tab" data-tab="blur" aria-selected="false">Motion Blur</button>
+        <button class="tab" role="tab" data-tab="fx" aria-selected="false">Transitions</button>
+      </nav>
+      <div class="side-foot">
+        <label class="pin">
+          <span>Stay on top</span>
+          <span class="switch"><input type="checkbox" id="pinned"><span></span></span>
+        </label>
+        <div class="conn"><span class="dot" id="connDot"></span><span id="connText">Connecting…</span></div>
+        <div class="tl" id="tlName"></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="target" id="target">
+        <div class="target-kind" id="targetKind">—</div>
+        <div class="target-name" id="targetName">Waiting for Resolve</div>
+        <div class="target-meta" id="targetMeta"></div>
+      </header>
+
+      <div class="notice" id="notice" hidden></div>
+
+      <!-- Graph -->
+      <section class="panel" data-panel="graph">
+        <div class="hint">Drag points and handles · <kbd>⌥</kbd> moves one handle · double-click adds a point · right-click removes · <kbd>⌘Z</kbd> undo</div>
+        <div class="editor-card">
+          <canvas id="graph" class="graph"></canvas>
+          <div class="speed-readout" id="speedReadout"></div>
+        </div>
+        <div class="row between">
+          <div class="row">
+            <span class="label">Smoothness</span>
+            <div class="seg" id="smoothness">
+              <button data-value="off">Off</button>
+              <button data-value="flow">Optical Flow</button>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn" id="btnReverse">Reverse</button>
+            <button class="btn" id="btnSave">Save preset</button>
+            <button class="btn ghost" id="btnClear">Remove ramp</button>
+          </div>
+        </div>
+        <form class="save-row" id="saveRow" hidden>
+          <input id="saveName" maxlength="24" placeholder="Preset name" autocomplete="off">
+          <button class="btn accent" type="submit">Save</button>
+          <button class="btn ghost" type="button" id="saveCancel">Cancel</button>
+        </form>
+        <div class="presets" id="presets"></div>
+      </section>
+
+      <!-- Motion blur -->
+      <section class="panel" data-panel="blur" hidden>
+        <div class="hint">Put an adjustment clip over the cut and park the playhead on it. Without one, the blur covers the clip under the playhead.</div>
+        <div class="card">
+          <div class="card-head">
+            <h2>Motion Blur</h2>
+            <label class="switch"><input type="checkbox" data-fx="blur.on"><span></span></label>
+          </div>
+          <div class="fields">
+            <div class="field">
+              <span class="label">Type</span>
+              <div class="seg" data-fx-seg="blur.type">
+                <button data-value="zoom">Zoom</button>
+                <button data-value="directional">Directional</button>
+              </div>
+            </div>
+            <div class="field">
+              <span class="label">Peak</span>
+              <div class="seg peak" data-fx-seg="blurPeak"></div>
+            </div>
+            <label class="field slider"><span class="label">Strength</span><input type="range" min="0" max="100" data-fx="blur.strength"><output></output></label>
+            <label class="field slider" data-show="blur.type=directional"><span class="label">Angle</span><input type="range" min="0" max="360" data-fx="blur.angle"><output></output></label>
+            <div class="field" data-show="blur.type=zoom">
+              <span class="label">Center</span>
+              <div class="pad" id="centerPad"><div class="pad-dot"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transitions -->
+      <section class="panel" data-panel="fx" hidden>
+        <div class="hint">Same target as Motion Blur. Each effect fades in and out over the adjustment clip.</div>
+        <div class="row">
+          <span class="label">Peak</span>
+          <div class="seg peak" data-fx-seg="fxPeak"></div>
+        </div>
+        <div class="fx-grid">
+          <div class="card">
+            <div class="card-head"><h2>Shake</h2><label class="switch"><input type="checkbox" data-fx="shake.on"><span></span></label></div>
+            <label class="field slider"><span class="label">Strength</span><input type="range" min="0" max="100" data-fx="shake.strength"><output></output></label>
+            <label class="field slider"><span class="label">Frequency</span><input type="range" min="0" max="100" data-fx="shake.frequency"><output></output></label>
+            <label class="field check"><input type="checkbox" data-fx="shake.blur"><span>Motion blur</span></label>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2>Warp</h2><label class="switch"><input type="checkbox" data-fx="warp.on"><span></span></label></div>
+            <label class="field slider"><span class="label">Strength</span><input type="range" min="0" max="100" data-fx="warp.strength"><output></output></label>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2>Aberration</h2><label class="switch"><input type="checkbox" data-fx="aberration.on"><span></span></label></div>
+            <label class="field slider"><span class="label">Strength</span><input type="range" min="0" max="100" data-fx="aberration.strength"><output></output></label>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2>Glow</h2><label class="switch"><input type="checkbox" data-fx="glow.on"><span></span></label></div>
+            <label class="field slider"><span class="label">Strength</span><input type="range" min="0" max="100" data-fx="glow.strength"><output></output></label>
+            <label class="field slider"><span class="label">Size</span><input type="range" min="0" max="100" data-fx="glow.size"><output></output></label>
+          </div>
+        </div>
+        <div class="row end"><button class="btn ghost" id="btnClearFx">Remove all effects</button></div>
+      </section>
+
+      <div class="toast" id="toast" hidden></div>
+    </main>
+  </div>
+  <script src="mock.js"></script>
+  <script src="curve.js"></script>
+  <script src="graph.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

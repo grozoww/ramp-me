@@ -1,0 +1,7 @@
+{
+  "name": "ramp-me",
+  "version": "0.1.0",
+  "description": "One-click speed ramps for DaVinci Resolve Studio",
+  "main": "main.js",
+  "private": true
+}

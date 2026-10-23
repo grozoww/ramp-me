@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BlackmagicDesign>
+    <Plugin>
+        <Id>com.grozoww.rampme</Id>
+        <Name>Ramp Me</Name>
+        <Version>0.1.0</Version>
+        <Description>One-click speed ramps, motion blur and transition effects</Description>
+        <FilePath>main.js</FilePath>
+    </Plugin>
+</BlackmagicDesign>

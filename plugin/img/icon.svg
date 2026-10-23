@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#22262c"/>
+      <stop offset="1" stop-color="#0c0d0f"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <clipPath id="strip"><rect x="250" y="800" width="524" height="16" rx="8"/></clipPath>
+  </defs>
+  <rect x="100" y="100" width="824" height="824" rx="186" fill="url(#bg)"/>
+  <rect x="101.5" y="101.5" width="821" height="821" rx="184.5" fill="none" stroke="#ffffff" stroke-opacity="0.09" stroke-width="3"/>
+  <g stroke="#ffffff" stroke-opacity="0.07" stroke-width="5"><line x1="381" y1="250" x2="381" y2="762"/><line x1="512" y1="250" x2="512" y2="762"/><line x1="643" y1="250" x2="643" y2="762"/><line x1="250" y1="427.33333333333337" x2="774" y2="427.33333333333337"/><line x1="250" y1="584.6666666666667" x2="774" y2="584.6666666666667"/></g>
+  <g stroke="#ffffff" stroke-opacity="0.2" stroke-width="5" stroke-dasharray="18 16">
+    <line x1="250" y1="270" x2="774" y2="270"/>
+    <line x1="250" y1="742" x2="774" y2="742"/>
+  </g>
+  <path d="M 250 742 C 337.3 506, 424.7 520.2, 512 506 C 599.3 491.8, 686.7 506, 774 270" fill="none" stroke="#2bff66" stroke-opacity="0.55" stroke-width="54" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M 250 742 C 337.3 506, 424.7 520.2, 512 506 C 599.3 491.8, 686.7 506, 774 270" fill="none" stroke="#2bff66" stroke-width="40" stroke-linecap="round"/>
+  <g fill="#2bff66" stroke="#0f1012" stroke-width="16"><circle cx="250" cy="742" r="38"/><circle cx="512" cy="506" r="38"/><circle cx="774" cy="270" r="38"/></g>
+  <g clip-path="url(#strip)"><rect x="250.0" y="800" width="13.7" height="16" fill="#ffd23f"/><rect x="263.1" y="800" width="13.7" height="16" fill="#ffd23f"/><rect x="276.2" y="800" width="13.7" height="16" fill="#ffd23f"/><rect x="289.3" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="302.4" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="315.5" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="328.6" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="341.7" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="354.8" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="367.9" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="381.0" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="394.1" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="407.2" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="420.3" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="433.4" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="446.5" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="459.6" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="472.7" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="485.8" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="498.9" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="512.0" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="525.1" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="538.2" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="551.3" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="564.4" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="577.5" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="590.6" y="800" width="13.7" height="16" fill="#38c8ff"/><rect x="603.7" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="616.8" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="629.9" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="643.0" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="656.1" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="669.2" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="682.3" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="695.4" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="708.5" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="721.6" y="800" width="13.7" height="16" fill="#2bff66"/><rect x="734.7" y="800" width="13.7" height="16" fill="#ffd23f"/><rect x="747.8" y="800" width="13.7" height="16" fill="#ffd23f"/><rect x="760.9" y="800" width="13.7" height="16" fill="#ffd23f"/></g>
+</svg>

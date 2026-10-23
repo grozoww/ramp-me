@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ramp Me</title>
+  <meta name="description" content="One-click speed ramps for DaVinci Resolve Studio. Pick a curve, the clip under your playhead is retimed. Same length, same first and last frame.">
+  <meta property="og:title" content="Ramp Me — speed ramps for DaVinci Resolve">
+  <meta property="og:description" content="Pick a curve, the clip under your playhead is retimed. Motion blur and transition effects included.">
+  <meta property="og:image" content="https://grozoww.github.io/ramp-me/img/graph.png">
+  <meta name="theme-color" content="#0a0b0d">
+  <link rel="icon" href="img/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-row">
+      <a class="logo" href="#top"><img src="img/icon.svg" alt="" width="34" height="34">Ramp Me</a>
+      <nav class="nav-links">
+        <a href="#demo">Demo</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#install">Install</a>
+      </nav>
+      <a class="btn btn-ghost btn-sm" href="https://github.com/grozoww/ramp-me">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Plugin for DaVinci Resolve Studio</p>
+        <h1>Speed ramps<br>in one click.</h1>
+        <p class="lead">Pick a curve and Ramp Me retimes the clip under your playhead. The clip keeps its length and its first and last frame. Only the speed inside changes.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://github.com/grozoww/ramp-me/archive/refs/heads/main.zip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg>
+            Download for macOS
+          </a>
+          <a class="btn btn-ghost" href="#demo">Try the demo</a>
+        </div>
+        <p class="fine">Free · macOS · Tested on Resolve Studio 21</p>
+      </div>
+
+      <figure class="hero-card" aria-label="Animated speed ramp curve">
+        <div class="hero-card-head">
+          <span class="chip" id="heroPreset">Fast-Slow-Fast</span>
+          <span class="readout">Speed <b id="heroSpeed">600%</b></span>
+        </div>
+        <canvas id="heroGraph"></canvas>
+        <div class="ribbon-label"><span>Source frames used</span><span class="legend"><i class="slow"></i>slow <i class="fast"></i>fast</span></div>
+        <canvas id="heroRibbon" class="ribbon"></canvas>
+      </figure>
+    </section>
+
+    <section id="demo" class="section wrap">
+      <div class="section-head">
+        <p class="eyebrow">Live demo</p>
+        <h2>Try the real thing</h2>
+        <p>This is the plugin's own interface, running on a sample clip. Click a preset, drag the points, switch tabs. Nothing here touches Resolve.</p>
+      </div>
+      <div class="window">
+        <div class="window-bar"><i></i><i></i><i></i><span>Ramp Me</span></div>
+        <div class="demo-stage" id="demoStage">
+          <iframe id="demoFrame" src="demo/index.html?preset=fast-slow-fast" title="Ramp Me demo" loading="lazy" width="1060" height="780"></iframe>
+        </div>
+        <img class="demo-still" src="img/graph.png" alt="Ramp Me graph editor with the Fast-Slow-Fast preset applied" width="1060" height="780">
+      </div>
+      <p class="note demo-note">The demo needs a wider screen. Above is a still of the graph editor.</p>
+    </section>
+
+    <section id="features" class="section wrap">
+      <div class="section-head">
+        <p class="eyebrow">Features</p>
+        <h2>Everything a speed-ramp edit needs</h2>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26c6 0 6-18 12-18s6 18 12 18"/><circle cx="16" cy="8" r="2.5"/></svg>
+          <h3>12 ready curves</h3>
+          <p>Fast-slow-fast, speed up, slow down, pushes, mid reverse and boomerangs. One click applies one.</p>
+        </article>
+        <article class="feature">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26C12 26 10 6 28 6"/><path d="M10 14l8-2" stroke-dasharray="2 3"/><circle cx="10" cy="14" r="2.5"/><circle cx="18" cy="12" r="2.5"/></svg>
+          <h3>Live curve editor</h3>
+          <p>Drag points and handles and the clip updates as you go. Undo per clip, save your own presets.</p>
+        </article>
+        <article class="feature">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="9" width="24" height="14" rx="2"/><path d="M9 9v14M14 9v14M18 9v14M23 9v14"/></svg>
+          <h3>Real frames in the slow parts</h3>
+          <p>Speed the clip up first, say to 600%. The slow stretches of a ramp then land near 100% and show real frames, not stretched ones.</p>
+        </article>
+        <article class="feature">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 22c4 0 4-8 8-8s4 8 8 8 4-8 8-8"/><path d="M4 12c4 0 4-4 8-4" opacity=".45"/></svg>
+          <h3>Optical flow</h3>
+          <p>One switch turns on Fusion's optical flow for smooth in-between frames when you need them.</p>
+        </article>
+        <article class="feature">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="3"/><path d="M16 4v5M16 23v5M4 16h5M23 16h5M7.5 7.5l3.5 3.5M21 21l3.5 3.5M7.5 24.5l3.5-3.5M21 11l3.5-3.5"/></svg>
+          <h3>Motion blur</h3>
+          <p>Zoom or directional blur over an adjustment clip. It fades in and out, peaking at the start, middle or end.</p>
+        </article>
+        <article class="feature">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 20l4-8 4 6 4-10 4 8 4-4"/><path d="M4 26h24"/></svg>
+          <h3>Transition effects</h3>
+          <p>Shake, warp, chromatic aberration and glow across a cut, each with its own strength.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="how" class="section wrap">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps on your timeline</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="step-n">1</span>
+          <h3>Speed the clip up</h3>
+          <p>Use Retime Controls (<kbd>⌘R</kbd>) so the clip fits the beat, for example at 600%.</p>
+        </li>
+        <li>
+          <span class="step-n">2</span>
+          <h3>Park the playhead</h3>
+          <p>Ramp Me always works on the clip under the red playhead. The window stays on top of Resolve.</p>
+        </li>
+        <li>
+          <span class="step-n">3</span>
+          <h3>Click a curve</h3>
+          <p>The ramp lands right away. Tweak it in the graph, or put an adjustment clip over the cut for blur and effects.</p>
+        </li>
+      </ol>
+      <div class="under-hood">
+        <h3>Under the hood</h3>
+        <p>Resolve's scripting can't change clip speed, so Ramp Me builds a Fusion <code>TimeStretcher</code> inside the clip with a keyframed source time. The edit page speed is applied after Fusion, so your timeline length and in and out points never move. Your own Fusion nodes stay where they are.</p>
+      </div>
+    </section>
+
+    <section id="install" class="section wrap">
+      <div class="section-head">
+        <p class="eyebrow">Install</p>
+        <h2>Up and running in a minute</h2>
+      </div>
+      <div class="install">
+        <div class="code-card">
+          <div class="code-head"><span>Terminal</span><button class="copy" type="button" data-copy="installCode">Copy</button></div>
+          <pre id="installCode"><code>git clone https://github.com/grozoww/ramp-me.git
+cd ramp-me
+scripts/install.sh</code></pre>
+          <p class="code-after">Restart Resolve, then open <b>Workspace → Workflow Integrations → Ramp Me</b>.</p>
+        </div>
+        <ul class="reqs">
+          <li><b>DaVinci Resolve Studio.</b> Plugins don't run in the free version.</li>
+          <li><b>macOS.</b> Tested on Resolve Studio 21.0 on Apple silicon.</li>
+          <li><b>Updates.</b> <code>git pull</code> and run the script again.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <span><img src="img/icon.svg" alt="" width="22" height="22"> Ramp Me by <a href="https://github.com/grozoww">grozoww</a></span>
+      <span class="muted">DaVinci Resolve is a trademark of Blackmagic Design. This project is not affiliated with it.</span>
+    </div>
+  </footer>
+
+  <script src="demo/curve.js"></script>
+  <script src="site.js"></script>
+</body>
+</html>
